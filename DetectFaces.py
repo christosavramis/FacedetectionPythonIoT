@@ -25,7 +25,7 @@ ap.add_argument('-b', '--bilateralFiltering', action='store_true',
     help="Removes noise while preserving edges")
 ap.add_argument('-m', '--medianFiltering', action='store_true', 
     help="Removes salt-and-pepper noise")
-ap.add_argument('-g', '--guassianFiltering', action='store_true', 
+ap.add_argument('-g', '--gaussianFiltering', action='store_true', 
     help="Removes salt-and-pepper noise")          
 args = vars(ap.parse_args())
 
@@ -35,7 +35,7 @@ if path.exists(args['json']) == False:
     f.close()
     #sys.exit(0)
 
-if path.exists(args['video']) == False:
+if path.exists(args['video']) == False and args['video'] != '0' :
     print("video file not found")
     sys.exit(0)
 
@@ -62,6 +62,8 @@ db = TinyDB(args['json'])
 db.truncate()
 
 #Load the video
+if args['video'] == 0 or args['video'] == '0':
+    args['video'] = 0
 cap = cv2.VideoCapture(args['video'])
 
 #For each frame apply classification
