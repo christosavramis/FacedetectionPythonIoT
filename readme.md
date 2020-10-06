@@ -1,7 +1,8 @@
 DecectFaces
 
+![GitHub Logo](/Capture.PNG)
 example usage python .\DetectFaces.py --video "people2.mp4" --json 'faces1.json' -b
-![GitHub Logo](/images/Capture.png)
+
 Arguments
 
     General:
